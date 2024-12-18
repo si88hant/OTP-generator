@@ -21,6 +21,16 @@ public class OTPController {
         return res;
     }
 
+    @GetMapping("/resend-otp/{mobileNumber}")
+    public OTP resendOTP(@PathVariable String mobileNumber) {
+        return otpService.resendOTP(mobileNumber);
+    }
+
+    @PostMapping("/regenerate-otp")
+    public OTP regenerateOTP(@RequestBody OTPRequest otpRequest) {
+        return otpService.regenerateOTP(otpRequest);
+    }
+
     @GetMapping("/get-all-otps")
     public List<OTP> getAllOTPs() {
         return otpService.getAllOTPs();
